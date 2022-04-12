@@ -6,6 +6,7 @@ WORKDIR /usr/app/backoffice
 COPY ./projects/backoffice/package.json ./
 COPY ./projects/backoffice/yarn.lock ./
 COPY ./projects/backoffice/start-dev.sh ./
+RUN npm install --global yarn
 RUN yarn
 
 RUN chmod +x start-dev.sh

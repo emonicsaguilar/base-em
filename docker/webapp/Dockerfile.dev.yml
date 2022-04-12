@@ -6,6 +6,7 @@ WORKDIR /usr/app/webapp
 COPY ./projects/webapp/package.json ./
 COPY ./projects/webapp/yarn.lock ./
 COPY ./projects/webapp/start-dev.sh ./
+RUN npm install --global yarn
 RUN yarn
 
 RUN chmod +x start-dev.sh
