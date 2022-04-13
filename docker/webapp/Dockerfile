@@ -4,7 +4,6 @@ ENV TZ ${TZ}
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 WORKDIR /usr/app/webapp
 COPY ./projects/webapp ./
-RUN npm install --global yarn
 RUN yarn && yarn build
 
 EXPOSE 3000

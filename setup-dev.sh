@@ -1,9 +1,9 @@
 #!/bin/bash
 
 sudo apt update -y && sudo apt upgrade -y;
-sudo apt install docker-compose -y;
-
-
+sudo apt install docker-compose curl -y;
+curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash 
+. ~/.nvm/nvm.sh
 
 mkdir projects
 cd projects
@@ -13,11 +13,29 @@ git clone https://github.com/emonicsaguilar/webapp.git
 
 git clone https://github.com/emonicsaguilar/backoffice.git
 
-cd ..
+cd api;
+nvm install;
+nvm use;
+npm install -g yarn;
+yarn;
+
+cd ../webapp;
+nvm install;
+nvm use;
+npm install -g yarn;
+yarn;
+
+cd ../backoffice;
+nvm install;
+nvm use;
+npm install -g yarn;
+yarn;
+
+cd ../..;
 
 cat .env.dev > .env;
-cat projects/api/.env.dev > projects/api/.env
-cat projects/webapp/.env.dev > projects/webapp/.env
+cat .data/config/.env.api > projects/api/.env
+cat .data/config/.env.webapp > projects/webapp/.env
 cat docker-compose.dev.yml > docker-compose.yml
 cat docker/webapp/Dockerfile.dev.yml > docker/webapp/Dockerfile.yml
 cat docker/nginx/Dockerfile.dev.yml > docker/nginx/Dockerfile.yml

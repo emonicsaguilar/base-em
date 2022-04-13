@@ -1,0 +1,16 @@
+FROM node:16.14.2
+LABEL maintainer="Alejandro Aguilar <emonics.aguilar@gmail.com>"
+ENV TZ ${TZ}
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+WORKDIR /usr/app/backoffice
+COPY ./projects/backoffice/package.json ./
+COPY ./projects/backoffice/yarn.lock ./
+COPY ./projects/backoffice/start-dev.sh ./
+RUN npm install --global yarn
+RUN yarn
+
+RUN chmod +x start-dev.sh
+
+EXPOSE 4200
+
+CMD ["bash", "start-dev.sh"]
