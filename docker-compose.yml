@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.3'
 
 networks:
   em:
@@ -34,7 +34,7 @@ services:
     container_name: em-webapp
     build:
       context: './'
-      dockerfile: docker/webapp/Dockerfile
+      dockerfile: docker/webapp/Dockerfile.dev
       args:
         - TZ=${TZ}
     image: em-webapp
@@ -58,7 +58,7 @@ services:
     container_name: em-backoffice
     build:
       context: './'
-      dockerfile: docker/backoffice/Dockerfile
+      dockerfile: docker/backoffice/Dockerfile.dev
       args:
         - TZ=${TZ}
     image: em-backoffice
@@ -81,7 +81,7 @@ services:
     container_name: em-api
     build:
       context: './'
-      dockerfile: docker/api/Dockerfile
+      dockerfile: docker/api/Dockerfile.dev
       args:
         - TZ=${TZ}
     image: em-api
